@@ -26,27 +26,30 @@ more_accurate = [word for word in possible_words if all(letter.lower() not in wo
 print(f'CONDITION 2: There are {len(more_accurate)} words that fit this condition.')
 print(more_accurate)
 
-### CONDITION 3
+
+# ### CONDITION 3
 most_accurate = []
 notstart_letter = list(doesnt_start)
-for letter in notstart_letter:
-    for word in more_accurate:
-        if not word.startswith(letter.lower()):
-            most_accurate.append(word)
+
+
+for word in more_accurate:
+    if not (any(word.startswith(letter.lower()) for letter in notstart_letter)):
+        most_accurate.append(word)
+
 if most_accurate:
     print(f'CONDITION 3: There are {len(most_accurate)} words that fit this condition.')
     print(most_accurate)
 if not most_accurate:
     print('CONDITION 3: No letters were provided.')
 
-#### if you know a correct position of a letter in the word, you can further target the outcomes ### CONDITION 4
-if most_accurate:
-    x = [word for word in most_accurate if word[4] == 'e' and word[1]=='a']
-    print(f'CONDITION 4: There are {len(x)} words that fit this condition.')
-    print(x)
-if not most_accurate:
-    x = [word for word in more_accurate if word[4] == 'e' and word[1]=='a']
-    print(f'CONDITION 4: There are {len(x)} words that fit this condition.')
-    print(x)
+### if you know a correct position of a letter in the word, you can further target the outcomes ### CONDITION 4
+# if most_accurate:
+#     x = [word for word in most_accurate if word[0] != 'l' and word[1] =='r' and  word[2] =='o']
+#     print(f'CONDITION 4: There are {len(x)} words that fit this condition.')
+#     print(x)
+# if not most_accurate:
+#     x = [word for word in more_accurate if word[4] == 'e' and word[1]=='a']
+#     print(f'CONDITION 4: There are {len(x)} words that fit this condition.')
+#     print(x)
 
 
